@@ -1,0 +1,21 @@
+class Solution {
+    public boolean rotateString(String s, String goal) {
+        int len=s.length();
+        if(s.length()!=goal.length()){
+            return false;
+        }
+        for(int i=0;i<len;i++){
+            if(s.charAt(i)==goal.charAt(0)){
+                int index1=i,index2=0;
+                while(index2<goal.length() && s.charAt(index1%len)==goal.charAt(index2)){
+                       index1++;
+                       index2++;
+                }
+                if(index2==goal.length()){
+                    return true;
+                }
+            }
+        }
+        return false;
+    }
+}
