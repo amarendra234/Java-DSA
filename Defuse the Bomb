@@ -1,0 +1,39 @@
+class Solution {
+    public int[] decrypt(int[] code, int k) {
+        int len=code.length;
+        int[] ans =new int[len];
+        if(k>0){
+              for(int i=0;i<len;i++){
+                   int next_k=k;
+                   int sum=0;
+                    int index=i+1;
+                  while(next_k>0){
+                      sum+=code[index%len];
+                      System.out.println(sum);
+                      index++;
+                      next_k--;
+                  }
+                  ans[i]=sum;
+              }
+        }else if(k<0){
+                   for(int i=0;i<len;i++){
+                   int next_k=k*-1;
+                   int sum=0;
+                    int index=i-1;
+                  while(next_k>0){
+                     
+                      sum+=code[(index+len)%len];
+                      index--;
+                      next_k--;
+                  }
+                  ans[i]=sum;
+              }
+        }else{
+            for(int i=0;i<len;i++){
+                ans[i]=0;
+            }
+        }
+
+        return ans;
+    }
+}
